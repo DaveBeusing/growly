@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Growly Demo – Presets</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 2em;
+      max-width: 600px;
+    }
+    label {
+      display: block;
+      margin-top: 1em;
+      font-weight: bold;
+    }
+    input[type="text"], select {
+      width: 100%;
+      padding: 8px;
+      font-size: 16px;
+      margin-top: 0.3em;
+      box-sizing: border-box;
+    }
+    button {
+      margin-top: 1em;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      background: #34495e;
+      color: white;
+    }
+    .preset-group {
+      margin-top: 2em;
+    }
+    .preset-group button {
+      margin-right: 0.5em;
+      background: #2c3e50;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🔔 Growly – Live Test mit Presets</h1>
+
+  <label for="messageText">Nachrichtentext</label>
+  <input type="text" id="messageText" placeholder="z. B. Webhook erfolgreich gesendet">
+
+  <label for="messageType">Nachrichtentyp</label>
+  <select id="messageType">
+    <option value="info">Info</option>
+    <option value="success">Success ✅</option>
+    <option value="error">Fehler ❌</option>
+  </select>
+
+  <label for="duration">Dauer (ms)</label>
+  <input type="text" id="duration" placeholder="z. B. 3000 (Standard: 4000)" />
+
+  <button onclick="previewGrowly()">🔁 Vorschau anzeigen</button>
+
+  <div class="preset-group">
+    <h3>Presets</h3>
+    <button onclick="usePreset('Metriken erfolgreich gesendet ✅', 'success')">✅ Erfolg</button>
+    <button onclick="usePreset('Webhook fehlgeschlagen ❌', 'error')">❌ Fehler</button>
+    <button onclick="usePreset('Verbindung wird aufgebaut …', 'info')">ℹ️ Info</button>
+    <button onclick="usePreset('Langsame Meldung (10s)', 'info', 10000)">⏱️ 10 Sekunden</button>
+  </div>
+
+  <script src="growly.js"></script>
+  <script>
+
+const growly = new Growly({ duration: 5000 });
+
+    function previewGrowly() {
+      const message = document.getElementById("messageText").value || "Beispielnachricht";
+      const type = document.getElementById("messageType").value || "info";
+      const duration = parseInt(document.getElementById("duration").value) || undefined;
+
+      if (typeof growly?.notify === "function") {
+        growly.notify(message, type, duration);
+      } else {
+        alert("growly.js ist nicht geladen.");
+      }
+    }
+
+    function usePreset(msg, type = "info", duration = "") {
+      document.getElementById("messageText").value = msg;
+      document.getElementById("messageType").value = type;
+      document.getElementById("duration").value = duration;
+      previewGrowly();
+    }
+  </script>
+
+</body>
+</html>
