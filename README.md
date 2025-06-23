@@ -2,12 +2,17 @@
 A very basic growl style notification class written in plain JS
 
 ### 🔸Usage
-`
-const growly = new Growly({ duration: 5000 });
-growly.notify( 'Success message', 'success', 5000 );
-growly.notify( 'Error message', 'error', 5000 );
-growly.notify( 'Info message', 'info', 5000 );
-`
+Checkout demo.html
+`const growly = new Growly({ duration: 5000 });`
+`growly.notify( 'Success message', 'success', 5000 );`
+`growly.notify( 'Error message', 'error', 5000 );`
+`growly.notify( 'Info message', 'info', 5000 );`
+
+
+### 🔸Screenshot
+![growly](https://raw.githubusercontent.com/DaveBeusing/growly/refs/heads/master/github/growly-screenshot.png)
+
+
 
 ### 🔸License
 Copyright ©️ 2025 Dave Beusing
