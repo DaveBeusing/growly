@@ -3,10 +3,12 @@ A very basic growl style notification class written in plain JS
 
 ### 🔸 Usage
 Checkout demo.html<br>
-`const growly = new Growly({ duration: 5000 });`\
-`growly.notify( 'Success message', 'success', 5000 );`\
-`growly.notify( 'Error message', 'error', 5000 );`\
-`growly.notify( 'Info message', 'info', 5000 );`\
+```html
+const growly = new Growly({ duration: 5000 });
+growly.notify( 'Success message', 'success', 5000 );
+growly.notify( 'Error message', 'error', 5000 );
+growly.notify( 'Info message', 'info', 5000 );
+```
 
 
 ### 🔸 Screenshot
